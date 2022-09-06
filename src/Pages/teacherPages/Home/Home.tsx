@@ -1,11 +1,15 @@
+import { Box, Tab, Tabs } from '@material-ui/core';
 import React from 'react';
-
-// import { Container } from './styles';
+import Header from '../../../Components/header/Header';
+import VerticalTabs from '../../../Components/navTabs/NavTabs';
 
 function Home() {
+  const userString = localStorage.getItem('user');
+  const user = userString && JSON.parse(userString);
   return (
     <div>
-      <h3>teacherSa</h3>
+      <Header />
+      <VerticalTabs />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const InputLoginBox = styled.div`
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,6 +24,7 @@ export const Container = styled.div`
 `;
 
 export const LoginBox = styled.div`
+  padding-top: 60px;
   width: 300px;
   height: 300px;
   background: #fff;

@@ -2,20 +2,13 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../../Components/header/Header';
+import NavTabs from '../../../Components/navTabs/NavTabs';
 
 function Home() {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.clear();
-    location.reload();
-  };
-
   return (
     <div>
-      <h1>PDF Tools</h1>
-      <Button type="submit" onClick={handleLogout}>
-        Logout
-      </Button>
+      <Header />
     </div>
   );
 }

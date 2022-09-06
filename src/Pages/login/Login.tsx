@@ -9,9 +9,15 @@ function Login() {
   const navigate = useNavigate();
 
   const loginUser = () => {
-    const user = { ...getValues(), isTeacher: getValues('username') === 'prof' };
-    localStorage.setItem('user', JSON.stringify(user));
-    location.reload();
+    const studantsString = localStorage.getItem('studants');
+    const allStudants = studantsString && JSON.parse(studantsString);
+    const loginStudant = { studantUsername: getValues('username'), studantPassword: getValues('password') };
+    const validateLogin = allStudants.includes(JSON.stringify(loginStudant));
+    if (getValues('username') === 'prof' || validateLogin) {
+      const user = { ...getValues(), isTeacher: getValues('username') === 'prof' };
+      localStorage.setItem('user', JSON.stringify(user));
+      location.reload();
+    }
   };
 
   const {
