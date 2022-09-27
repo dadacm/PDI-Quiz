@@ -12,13 +12,13 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { TestCardProps } from './TestCard.types';
+import { Alert } from '@material-ui/lab';
+import { RenderStatusProps, StatusTest, TestCardProps } from './TestCard.types';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       minHeight: '100px',
-      width: '400px',
     },
     expand: {
       transform: 'rotate(0deg)',
@@ -43,6 +43,11 @@ export default function TestCard(props: TestCardProps) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const renderStatus: RenderStatusProps = {
+    [StatusTest.EM_ABERTO]: { text: 'Em aberto', color: 'warning' },
+    [StatusTest.EM_ANDAMENTO]: { text: 'Em andamento', color: 'info' },
+    [StatusTest.CONCLUIDO]: { text: 'Concluido', color: 'success' },
+  };
 
   return (
     <Card style={{ margin: '20px 0' }} className={classes.root}>
@@ -50,13 +55,13 @@ export default function TestCard(props: TestCardProps) {
         <CardHeader
           title={newTest[0].tema}
           subheader={
-            <div>
+            <div style={{ width: '600px' }}>
               <p>{name}</p>
-              <p>{status}</p>
             </div>
           }
         />
         <CardActions disableSpacing>
+          <Alert severity={renderStatus[status].color}>{renderStatus[status].text}</Alert>
           <IconButton
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded,
@@ -72,13 +77,12 @@ export default function TestCard(props: TestCardProps) {
         <CardContent>
           {newTest.map((test, index) => (
             <div>
-              <Typography paragraph>{`Questão numero ${index + 1}:`}</Typography>
-              <Typography paragraph>{test.questionInput}</Typography>
-              <Typography paragraph>{test.alternativeA}</Typography>
-              <Typography paragraph>{test.alternativeB}</Typography>
-              <Typography paragraph>{test.alternativeC}</Typography>
-              <Typography paragraph>{test.alternativeD}</Typography>
-              <Typography paragraph>{test.alternativeE}</Typography>
+              <Typography paragraph>{`${index + 1}) ${test.questionInput}`}</Typography>
+              <Typography paragraph>{`A) ${test.alternativeA}`}</Typography>
+              <Typography paragraph>{`B) ${test.alternativeB}`}</Typography>
+              <Typography paragraph>{`C) ${test.alternativeC}`}</Typography>
+              <Typography paragraph>{`D) ${test.alternativeD}`}</Typography>
+              <Typography paragraph>{`E) ${test.alternativeE}`}</Typography>
             </div>
           ))}
         </CardContent>

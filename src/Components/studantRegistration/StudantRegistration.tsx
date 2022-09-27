@@ -3,7 +3,7 @@ import React from 'react';
 import Alert from '@material-ui/lab/Alert';
 import { Controller, useForm } from 'react-hook-form';
 import { StudantRegistrationForm } from './StudantRegistration.style';
-import { fetchService } from '../../services/FetchService';
+import { fetchService } from '../../services/fetchService/FetchService';
 
 function StudantRegistration() {
   const [open, setOpen] = React.useState(false);

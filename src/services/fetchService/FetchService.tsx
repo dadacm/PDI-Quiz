@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { instanceAxios } from '../utils/Axios/instanceAxios';
+import { instanceAxios } from '../../utils/Axios/instanceAxios';
 import { fetchServiceProps } from './fetchService.types';
 
 export const fetchService = {

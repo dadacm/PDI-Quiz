@@ -3,7 +3,7 @@ import { Button, CircularProgress, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { fetchService } from '../../services/FetchService';
+import { fetchService } from '../../services/fetchService/FetchService';
 import { Container, InputLoginBox, LoginBox } from './Login.style';
 
 function Login() {
@@ -65,7 +65,7 @@ function Login() {
             }}
             render={({ field: { onChange, value } }) => (
               <TextField
-                helperText={<span style={{ marginBottom: 10 }}>{errors.username?.message}</span>}
+                helperText={<span style={{ marginBottom: 10 }}>{`${errors.username?.message}`}</span>}
                 error={!!errors.username?.message}
                 required
                 type="email"
@@ -89,7 +89,7 @@ function Login() {
             render={({ field: { onChange, value } }) => (
               <TextField
                 error={!!errors.password?.message}
-                helperText={<span>{errors.password?.message}</span>}
+                helperText={<span>{`${errors.password?.message}`}</span>}
                 required
                 type="password"
                 label="Senha"

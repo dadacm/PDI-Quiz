@@ -1,6 +1,6 @@
 import { Button, CircularProgress, Typography, useScrollTrigger } from '@material-ui/core';
 import React, { useState } from 'react';
-import { fetchService } from '../../../services/FetchService';
+import { fetchService } from '../../../services/fetchService/FetchService';
 import { setRandomTest } from '../../../utils/setRandomTest';
 import SelectList from '../../temaList/TemaList';
 import { StepsContainer } from '../Generatest.style';

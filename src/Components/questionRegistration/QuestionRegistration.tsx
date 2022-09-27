@@ -1,21 +1,8 @@
-import {
-  Box,
-  Button,
-  CircularProgress,
-  FormControl,
-  FormControlLabel,
-  InputLabel,
-  MenuItem,
-  Radio,
-  RadioGroup,
-  Select,
-  Snackbar,
-  TextField,
-} from '@material-ui/core';
+import { Box, Button, CircularProgress, FormControlLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Snackbar, TextField } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { fetchService } from '../../services/FetchService';
+import { fetchService } from '../../services/fetchService/FetchService';
 import ModalAddTema from '../modalAddTema/ModalAddTema';
 import { ButtonBox, EnunciadoBox, QuestionForm, radioButonStyle } from './QuestionRegistration.style';
 
@@ -92,7 +79,7 @@ function QuestionRegistration() {
                 <TextField
                   required
                   error={!!errors.questionInput?.message}
-                  helperText={<span>{`${errors.questionInput?.message}`}</span>}
+                  helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                   style={{ marginBottom: '48px' }}
                   multiline
                   value={value}
@@ -151,7 +138,7 @@ function QuestionRegistration() {
                     <TextField
                       required
                       error={!!errors.alternativeA?.message}
-                      helperText={<span>{`${errors.questionInput?.message}`}</span>}
+                      helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                       value={value}
                       onChange={onChange}
                       label="Altenativa A"
@@ -171,7 +158,7 @@ function QuestionRegistration() {
                     <TextField
                       required
                       error={!!errors.alternativeB?.message}
-                      helperText={<span>{`${errors.questionInput?.message}`}</span>}
+                      helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                       value={value}
                       onChange={onChange}
                       label="Altenativa B"
@@ -191,7 +178,7 @@ function QuestionRegistration() {
                     <TextField
                       required
                       error={!!errors.alternativeC?.message}
-                      helperText={<span>{`${errors.questionInput?.message}`}</span>}
+                      helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                       value={value}
                       onChange={onChange}
                       label="Altenativa C"
@@ -211,7 +198,7 @@ function QuestionRegistration() {
                     <TextField
                       required
                       error={!!errors.alternativeD?.message}
-                      helperText={<span>{`${errors.questionInput?.message}`}</span>}
+                      helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                       value={value}
                       onChange={onChange}
                       label="Altenativa D"
@@ -231,7 +218,7 @@ function QuestionRegistration() {
                     <TextField
                       required
                       error={!!errors.alternativeE?.message}
-                      helperText={<span>{`${errors.questionInput?.message}`}</span>}
+                      helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                       value={value}
                       onChange={onChange}
                       label="Altenativa E"
