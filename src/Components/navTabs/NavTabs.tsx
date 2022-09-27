@@ -5,6 +5,11 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import StudantRegistration from '../studantRegistration/StudantRegistration';
+import QuestionRegistration from '../questionRegistration/QuestionRegistration';
+import { PainelContainer } from './NavTabs.style';
+import GenerateTest from '../generateTest/GenerateTest';
+import TestsList from '../testsList/TestsList';
+import RegisteredTests from '../resgisteredTests/RegisteredTests';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -56,6 +61,7 @@ export default function VerticalTabs() {
   return (
     <div className={classes.root}>
       <Tabs
+        style={{ display: 'block', width: '20%' }}
         orientation="vertical"
         variant="fullWidth"
         indicatorColor="primary"
@@ -66,16 +72,28 @@ export default function VerticalTabs() {
         className={classes.tabs}>
         <Tab label="Criar nova questão" {...a11yProps(0)} />
         <Tab label="Cadastrar alunos" {...a11yProps(1)} />
-        <Tab label="Gearar teste" {...a11yProps(2)} />
+        <Tab label="Cadastrar Prova" {...a11yProps(2)} />
+        <Tab label="Provas cadastradas" {...a11yProps(3)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        Item one
+        <PainelContainer>
+          <QuestionRegistration />
+        </PainelContainer>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <StudantRegistration />
+        <PainelContainer>
+          <StudantRegistration />
+        </PainelContainer>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <PainelContainer>
+          <GenerateTest />
+        </PainelContainer>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <PainelContainer>
+          <RegisteredTests />
+        </PainelContainer>
       </TabPanel>
     </div>
   );
