@@ -1,7 +1,7 @@
-import { Button, CircularProgress, Typography, useScrollTrigger } from '@material-ui/core';
+import { Button, CircularProgress, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
-import { fetchService } from '../../../services/fetchService/FetchService';
-import { setRandomTest } from '../../../utils/setRandomTest';
+import { fetchService } from '../../../../services/fetchService/FetchService';
+import { setRandomTest } from '../../../../utils/setRandomTest';
 import SelectList from '../../temaList/TemaList';
 import { StepsContainer } from '../Generatest.style';
 import { StudantSelectStepProps } from './StudantSelectStepProps.types';
@@ -24,11 +24,13 @@ function StudantsSelectStep(props: StudantSelectStepProps) {
     setCheckedStudants,
   } = props;
   const [isLoadingTestCreation, setIsLoadingTestCreation] = useState(false);
+  const testsString = localStorage.getItem('tests');
+  const allTests = testsString && JSON.parse(testsString);
   const createTest = () => {
     if (checkedStudants.length === 0) {
       return setError('quantity', { message: 'Selecione pelo menos um aluno' });
     }
-    const newTests: object[] = [];
+    const newTests: object[] = allTests || [];
     for (let index = 0; checkedStudants.length > index; index += 1) {
       newTests.push(setRandomTest(getValues('thisTemaQuestions'), getValues('questionsQuantity'), checkedStudants[index]));
     }

@@ -45,6 +45,15 @@ app.post('/create-test', (req, res) => {
     500,
   );
 });
+app.post('/send-test', (req, res) => {
+  setTimeout(
+    () =>
+      res.json({
+        data: {},
+      }),
+    500,
+  );
+});
 
 app.all('*', proxy(process.env.API));
 

@@ -17,7 +17,7 @@ function Header(props: HeaderTypes) {
   return (
     <HeaderDiv>
       <Username>{user?.username}</Username>
-      <h1>PDI Test</h1>
+      <h1>PDI Test-Maker</h1>
       <Button style={{ color: 'white' }} type="submit" onClick={handleLogout}>
         Sair
       </Button>

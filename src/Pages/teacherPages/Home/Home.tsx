@@ -1,7 +1,7 @@
 import { Box, Tab, Tabs } from '@material-ui/core';
 import React from 'react';
 import Header from '../../../Components/header/Header';
-import VerticalTabs from '../../../Components/navTabs/NavTabs';
+import VerticalTabs from '../../../Components/teacherComponents/navTabs/NavTabs';
 
 function Home() {
   const userString = localStorage.getItem('user');

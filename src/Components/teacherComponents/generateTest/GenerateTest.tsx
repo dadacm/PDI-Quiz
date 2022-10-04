@@ -48,7 +48,7 @@ function GenerateTest() {
   const studantsString = localStorage.getItem('studants');
   const allStudants = studantsString && JSON.parse(studantsString);
   const studantNamesarray: string[] = [];
-  const getStudantNames = allStudants.map((studant: string) => studantNamesarray.push(JSON.parse(studant).studantUsername));
+  const getStudantNames = allStudants && allStudants.map((studant: string) => studantNamesarray.push(JSON.parse(studant).studantUsername));
   const [checkedStudants, setCheckedStudants] = React.useState<string[]>([]);
   const [tema, setTema] = React.useState('');
   const classes = useStyles();

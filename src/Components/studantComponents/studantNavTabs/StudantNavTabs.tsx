@@ -4,12 +4,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import StudantRegistration from '../studantRegistration/StudantRegistration';
-import QuestionRegistration from '../questionRegistration/QuestionRegistration';
-import { PainelContainer } from './NavTabs.style';
-import GenerateTest from '../generateTest/GenerateTest';
-import TestsList from '../testsList/TestsList';
-import RegisteredTests from '../resgisteredTests/RegisteredTests';
+import { PainelContainer } from '../../teacherComponents/navTabs/NavTabs.style';
+import StudantRegisteredTests from '../studantRegisteredTests/StudantRegisteredTests';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -50,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function VerticalTabs() {
+export default function StudantNavTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -70,29 +66,11 @@ export default function VerticalTabs() {
         onChange={handleChange}
         aria-label="Vertical tabs example"
         className={classes.tabs}>
-        <Tab label="Criar nova questão" {...a11yProps(0)} />
-        <Tab label="Cadastrar alunos" {...a11yProps(1)} />
-        <Tab label="Cadastrar Prova" {...a11yProps(2)} />
-        <Tab label="Provas cadastradas" {...a11yProps(3)} />
+        <Tab label="Provas cadastradas" {...a11yProps(0)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         <PainelContainer>
-          <QuestionRegistration />
-        </PainelContainer>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <PainelContainer>
-          <StudantRegistration />
-        </PainelContainer>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <PainelContainer>
-          <GenerateTest />
-        </PainelContainer>
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <PainelContainer>
-          <RegisteredTests />
+          <StudantRegisteredTests />
         </PainelContainer>
       </TabPanel>
     </div>

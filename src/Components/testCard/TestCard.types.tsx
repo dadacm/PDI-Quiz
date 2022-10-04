@@ -1,23 +1,33 @@
 import { Color } from '@material-ui/lab';
+import { QuestionAnswered } from '../studantComponents/testModal/TestModal.types';
 
+export interface Questions {
+  answer?: string;
+  questionInput: string;
+  tema: string;
+  alternativeA: string;
+  alternativeB: string;
+  alternativeC: string;
+  alternativeD: string;
+  alternativeE: string;
+  corectAlternative: string;
+  id: number;
+}
+
+export interface AnsweredQuestion extends Questions {
+  answer: string;
+}
 export interface TestProps {
   name: string;
   status: 1 | 2 | 3;
-  newTest: [
-    {
-      questionInput: string;
-      tema: string;
-      alternativeA: string;
-      alternativeB: string;
-      alternativeC: string;
-      alternativeD: string;
-      alternativeE: string;
-      corectAlternative: string;
-    },
-  ];
+  newTest: Questions[];
+  nota?: number;
+  id: number;
 }
 export interface TestCardProps {
   test: TestProps;
+  isTeacher?: boolean;
+  testStartButton?: boolean;
 }
 export enum StatusTest {
   EM_ABERTO = 1,

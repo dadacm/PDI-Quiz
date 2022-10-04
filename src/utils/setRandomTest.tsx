@@ -4,5 +4,5 @@ export const setRandomTest = (questions: [{}], questionQuantity: number, name: s
     const j = Math.floor(Math.random() * (i + 1));
     newTest.push(questions[Math.floor(Math.random() * questions.length)]);
   }
-  return { name, newTest, status: 1 };
+  return { name, newTest, status: 1, id: Math.floor(Date.now() * Math.random()).toString(36) };
 };

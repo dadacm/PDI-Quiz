@@ -3,7 +3,7 @@ import React from 'react';
 import Alert from '@material-ui/lab/Alert';
 import { Controller, useForm } from 'react-hook-form';
 import { StudantRegistrationForm } from './StudantRegistration.style';
-import { fetchService } from '../../services/fetchService/FetchService';
+import { fetchService } from '../../../services/fetchService/FetchService';
 
 function StudantRegistration() {
   const [open, setOpen] = React.useState(false);
@@ -23,7 +23,7 @@ function StudantRegistration() {
   };
   const handleRegister = () => {
     if (!localStorage.getItem('studants')) {
-      fetchService.post({
+      return fetchService.post({
         url: '/register-studant',
         setIsLoading: setIsRegisteringStudant,
         onSuccess: () => {
@@ -33,14 +33,13 @@ function StudantRegistration() {
         },
       });
     }
-    fetchService.post({
+    return fetchService.post({
       url: '/register-studant',
       setIsLoading: setIsRegisteringStudant,
       onSuccess: () => {
         const studantsString = localStorage.getItem('studants');
         const allStudants = studantsString && JSON.parse(studantsString);
         const setStudant = allStudants.push(JSON.stringify(getValues()));
-        localStorage.removeItem('studants');
         localStorage.setItem('studants', JSON.stringify(allStudants));
         return setOpen(true);
       },
@@ -60,7 +59,7 @@ function StudantRegistration() {
           render={({ field: { onChange, value } }) => (
             <TextField
               error={!!errors.studantUsername?.message}
-              helperText={<span>{errors.studantUsername?.message ? errors.studantUsername?.message : undefined}</span>}
+              helperText={errors.studantUsername?.message ? <span>{`${errors.studantUsername?.message}`}</span> : undefined}
               value={value}
               onChange={onChange}
               label="Nome"
@@ -78,7 +77,7 @@ function StudantRegistration() {
           render={({ field: { onChange, value } }) => (
             <TextField
               error={!!errors.studantPassword?.message}
-              helperText={<span>{errors.studantPassword?.message ? errors.studantPassword?.message : undefined}</span>}
+              helperText={errors.studantPassword?.message ? <span>{`${errors.studantPassword?.message}`}</span> : undefined}
               value={value}
               onChange={onChange}
               size="medium"
@@ -97,7 +96,7 @@ function StudantRegistration() {
         variant="contained">
         Finalizar cadastro
       </Button>
-      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+      <Snackbar open={open} autoHideDuration={600} onClose={handleClose}>
         <Alert variant="filled" severity="success">
           Aluno cadastrado com sucesso
         </Alert>

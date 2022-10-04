@@ -2,7 +2,7 @@ import { Box, Button, CircularProgress, FormControlLabel, InputLabel, MenuItem, 
 import { Alert } from '@material-ui/lab';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { fetchService } from '../../services/fetchService/FetchService';
+import { fetchService } from '../../../services/fetchService/FetchService';
 import ModalAddTema from '../modalAddTema/ModalAddTema';
 import { ButtonBox, EnunciadoBox, QuestionForm, radioButonStyle } from './QuestionRegistration.style';
 
@@ -11,7 +11,7 @@ function QuestionRegistration() {
   const [isLoadingRegister, setIsLoadingRegister] = useState(false);
   const [openAlert, setOpenAlert] = React.useState(false);
   const temasString = localStorage.getItem('temas');
-  const arrayTemas = temasString && JSON.parse(temasString);
+  const arrayTemas = temasString ? JSON.parse(temasString) : [];
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCorectAlternative((event.target as HTMLInputElement).value);
   };
@@ -57,7 +57,7 @@ function QuestionRegistration() {
       setIsLoading: setIsLoadingRegister,
       payload: { ...getValues(), corectAlternative },
       onSuccess: () => {
-        setQuestion({ ...getValues(), corectAlternative });
+        setQuestion({ ...getValues(), corectAlternative, id: Math.floor(Date.now() * Math.random()).toString(36) });
         setOpenAlert(true);
       },
     });

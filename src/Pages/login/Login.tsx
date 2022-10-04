@@ -15,14 +15,13 @@ function Login() {
     getValues,
     setError,
     clearErrors,
-    resetField,
   } = useForm();
 
   const isValidLogin = () => {
     const studantsString = localStorage.getItem('studants');
     const allStudants = studantsString && JSON.parse(studantsString);
     const loginStudant = { studantUsername: getValues('username'), studantPassword: getValues('password') };
-    const validateStudantLogin = allStudants.includes(JSON.stringify(loginStudant));
+    const validateStudantLogin = allStudants && allStudants.includes(JSON.stringify(loginStudant));
 
     return (getValues('username') === 'prof' && getValues('password') === '123') || validateStudantLogin;
   };
@@ -65,7 +64,7 @@ function Login() {
             }}
             render={({ field: { onChange, value } }) => (
               <TextField
-                helperText={<span style={{ marginBottom: 10 }}>{`${errors.username?.message}`}</span>}
+                helperText={errors.username?.message ? <span style={{ marginBottom: 10 }}>{`${errors.username?.message}`}</span> : undefined}
                 error={!!errors.username?.message}
                 required
                 type="email"
@@ -89,7 +88,7 @@ function Login() {
             render={({ field: { onChange, value } }) => (
               <TextField
                 error={!!errors.password?.message}
-                helperText={<span>{`${errors.password?.message}`}</span>}
+                helperText={errors.password?.message ? <span>{`${errors.password?.message}`}</span> : undefined}
                 required
                 type="password"
                 label="Senha"
