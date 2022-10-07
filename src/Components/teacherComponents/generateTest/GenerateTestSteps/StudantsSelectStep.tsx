@@ -37,7 +37,6 @@ function StudantsSelectStep(props: StudantSelectStepProps) {
     fetchService.post({
       setIsLoading: setIsLoadingTestCreation,
       url: '/create-test',
-      payload: newTests,
       onSuccess: () => {
         localStorage.setItem('tests', JSON.stringify(newTests));
         handleNext();

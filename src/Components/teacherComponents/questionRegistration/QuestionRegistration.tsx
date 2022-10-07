@@ -77,6 +77,7 @@ function QuestionRegistration() {
               }}
               render={({ field: { onChange, value } }) => (
                 <TextField
+                  inputProps={{ id: 'input-enum' }}
                   required
                   error={!!errors.questionInput?.message}
                   helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
@@ -84,7 +85,7 @@ function QuestionRegistration() {
                   multiline
                   value={value}
                   onChange={onChange}
-                  label="Digite o enunciado"
+                  label={<label htmlFor="input-enum">Digite o enunciado</label>}
                 />
               )}
             />
@@ -99,6 +100,7 @@ function QuestionRegistration() {
               }}
               render={({ field: { onChange, value } }) => (
                 <Select
+                  data-testid="select-tema"
                   MenuProps={{
                     anchorOrigin: {
                       vertical: 'bottom',
@@ -136,16 +138,17 @@ function QuestionRegistration() {
                   }}
                   render={({ field: { onChange, value } }) => (
                     <TextField
+                      inputProps={{ id: 'alternativeA-input' }}
                       required
                       error={!!errors.alternativeA?.message}
                       helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                       value={value}
                       onChange={onChange}
-                      label="Altenativa A"
+                      label={<label htmlFor="alternativeA-input">Altenativa A</label>}
                     />
                   )}
                 />
-                <FormControlLabel style={radioButonStyle} value="A" control={<Radio />} label="A" />
+                <FormControlLabel data-testid="radioB-A" style={radioButonStyle} value="A" control={<Radio />} label="A" />
               </Box>
               <Box>
                 <Controller
@@ -156,12 +159,13 @@ function QuestionRegistration() {
                   }}
                   render={({ field: { onChange, value } }) => (
                     <TextField
+                      inputProps={{ id: 'alternativeB-input' }}
                       required
                       error={!!errors.alternativeB?.message}
                       helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                       value={value}
                       onChange={onChange}
-                      label="Altenativa B"
+                      label={<label htmlFor="alternativeB-input">Altenativa B</label>}
                     />
                   )}
                 />
@@ -176,12 +180,13 @@ function QuestionRegistration() {
                   }}
                   render={({ field: { onChange, value } }) => (
                     <TextField
+                      inputProps={{ id: 'alternativeC-input' }}
                       required
                       error={!!errors.alternativeC?.message}
                       helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                       value={value}
                       onChange={onChange}
-                      label="Altenativa C"
+                      label={<label htmlFor="alternativeC-input">Altenativa C</label>}
                     />
                   )}
                 />
@@ -196,12 +201,13 @@ function QuestionRegistration() {
                   }}
                   render={({ field: { onChange, value } }) => (
                     <TextField
+                      inputProps={{ id: 'alternativeD-input' }}
                       required
                       error={!!errors.alternativeD?.message}
                       helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                       value={value}
                       onChange={onChange}
-                      label="Altenativa D"
+                      label={<label htmlFor="alternativeD-input">Altenativa D</label>}
                     />
                   )}
                 />
@@ -216,12 +222,13 @@ function QuestionRegistration() {
                   }}
                   render={({ field: { onChange, value } }) => (
                     <TextField
+                      inputProps={{ id: 'alternativeE-input' }}
                       required
                       error={!!errors.alternativeE?.message}
                       helperText={errors.questionInput?.message ? <span>{`${errors.questionInput?.message}`}</span> : undefined}
                       value={value}
                       onChange={onChange}
-                      label="Altenativa E"
+                      label={<label htmlFor="alternativeE-input">Altenativa E</label>}
                     />
                   )}
                 />

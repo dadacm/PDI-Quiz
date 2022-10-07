@@ -64,11 +64,13 @@ function Login() {
             }}
             render={({ field: { onChange, value } }) => (
               <TextField
+                name="user"
+                inputProps={{ id: 'user' }}
                 helperText={errors.username?.message ? <span style={{ marginBottom: 10 }}>{`${errors.username?.message}`}</span> : undefined}
                 error={!!errors.username?.message}
                 required
                 type="email"
-                label="Usuário"
+                label={<label htmlFor="user">Usuário</label>}
                 onChange={e => {
                   if (errors.username?.message) {
                     clearErrors('username');
@@ -87,11 +89,14 @@ function Login() {
             }}
             render={({ field: { onChange, value } }) => (
               <TextField
+                className="senha"
+                inputProps={{ id: 'password' }}
+                name="password"
                 error={!!errors.password?.message}
                 helperText={errors.password?.message ? <span>{`${errors.password?.message}`}</span> : undefined}
                 required
                 type="password"
-                label="Senha"
+                label={<label htmlFor="password">Senha</label>}
                 onChange={e => {
                   if (errors.password?.message) {
                     clearErrors('password');

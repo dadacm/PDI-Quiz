@@ -36,6 +36,7 @@ function StudantRegistration() {
     return fetchService.post({
       url: '/register-studant',
       setIsLoading: setIsRegisteringStudant,
+      payload: getValues(),
       onSuccess: () => {
         const studantsString = localStorage.getItem('studants');
         const allStudants = studantsString && JSON.parse(studantsString);
@@ -58,11 +59,12 @@ function StudantRegistration() {
           }}
           render={({ field: { onChange, value } }) => (
             <TextField
+              inputProps={{ id: 'name' }}
               error={!!errors.studantUsername?.message}
               helperText={errors.studantUsername?.message ? <span>{`${errors.studantUsername?.message}`}</span> : undefined}
               value={value}
               onChange={onChange}
-              label="Nome"
+              label={<label htmlFor="name">Nome</label>}
             />
           )}
         />
@@ -76,12 +78,13 @@ function StudantRegistration() {
           }}
           render={({ field: { onChange, value } }) => (
             <TextField
+              inputProps={{ id: 'password' }}
               error={!!errors.studantPassword?.message}
               helperText={errors.studantPassword?.message ? <span>{`${errors.studantPassword?.message}`}</span> : undefined}
               value={value}
               onChange={onChange}
               size="medium"
-              label="senha"
+              label={<label htmlFor="password">Senha</label>}
               type="password"
             />
           )}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { instanceAxios } from '../../utils/Axios/instanceAxios';
+import { InstanceAxios } from '../../utils/Axios/instanceAxios';
 import { fetchServiceProps } from './fetchService.types';
 
 export const fetchService = {
@@ -9,7 +9,7 @@ export const fetchService = {
     if (setIsLoading) {
       setIsLoading(true);
     }
-    instanceAxios.get(url).then(res => {
+    InstanceAxios.get(url).then(res => {
       if (setData) {
         setData(res.data.data);
       }
@@ -28,7 +28,7 @@ export const fetchService = {
     if (setIsLoading) {
       setIsLoading(true);
     }
-    instanceAxios.post(url, payload).then(res => {
+    InstanceAxios.post(url, payload).then(res => {
       if (setData) {
         setData(res.data.data);
       }

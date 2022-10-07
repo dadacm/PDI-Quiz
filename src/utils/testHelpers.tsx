@@ -3,7 +3,6 @@ import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import { ThemeConsumer } from 'styled-components';
 import { act, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import { theme } from '@agilize/components-core';
 import { AxiosStatic } from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';
 
@@ -13,13 +12,9 @@ export const buildSpy = () => jest.fn();
 // eslint-disable-next-line global-require
 export const mockAxios: jest.Mocked<AxiosStatic> = require('axios').default;
 
-export const renderWithTheme = (children: React.ReactNode) => {
-  (ThemeConsumer as any)._currentValue = theme;
-  return render(<div>{children}</div>);
-};
+export const renderWithTheme = (children: React.ReactNode) => render(<div>{children}</div>);
 
 export const renderWithRoute = (ui: React.ReactElement, { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {}) => {
-  (ThemeConsumer as any)._currentValue = theme;
   // eslint-disable-next-line react/prop-types
   function Wrapper({ children }: any) {
     return <HistoryRouter history={history}>{children}</HistoryRouter>;
@@ -36,7 +31,6 @@ export const ensureRender = async () => {
 };
 
 export const renderWithFormProvider = (ui: any, defaultValues?: any) => {
-  (ThemeConsumer as any)._currentValue = theme;
   function Wrapper({ children }: any): any {
     const methods = useForm({ defaultValues: defaultValues || {} });
     const handleSubmit = () => {};
@@ -53,7 +47,6 @@ export const renderWithFormProvider = (ui: any, defaultValues?: any) => {
 };
 
 export const renderWithFormNextProvider = (ui: any, defaultValues?: any) => {
-  (ThemeConsumer as any)._currentValue = theme;
   function Wrapper({ children }: any) {
     const methods = useForm({ defaultValues: defaultValues || {} });
     const handleSubmit = () => {};
@@ -70,8 +63,6 @@ export const renderWithFormNextProvider = (ui: any, defaultValues?: any) => {
 };
 
 export const renderWithCallbackFormMethods = (defaultValues: any, callbackComponent: any) => {
-  (ThemeConsumer as any)._currentValue = theme;
-
   function Wrapper() {
     const handleSubmit = () => {};
     const formMethods = useForm({ mode: 'onChange', defaultValues });
@@ -91,8 +82,6 @@ export const renderWithCallbackFormMethods = (defaultValues: any, callbackCompon
 };
 
 export const renderWithCallbackFormNextMethods = (defaultValues: any, callbackComponent: any) => {
-  (ThemeConsumer as any)._currentValue = theme;
-
   function Wrapper() {
     const handleSubmit = () => {};
     const formMethods = useForm({ mode: 'onChange', defaultValues });

@@ -1,6 +1,6 @@
+import React from 'react';
 import { StatusTest, TestProps } from '../../testCard/TestCard.types';
 import TestsList from '../../testsList/TestsList';
-
 // import { Container } from './styles'
 
 function RegisteredTests() {

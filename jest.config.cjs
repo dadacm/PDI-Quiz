@@ -10,7 +10,7 @@ module.exports = {
       diagnostics: false,
     },
   },
-  setupFilesAfterEnv: ['./jest.setup.ts'],
+  setupFilesAfterEnv: ['./src/utils/JestLocalStorage.ts', './jest.setup.ts'],
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
   testPathIgnorePatterns: ['/node_modules/', '/src/styles/', '/cypress/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],

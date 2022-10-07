@@ -35,7 +35,14 @@ function QuestionsQuantity(props: QuestionsQuantityProps) {
           required: 'Campo obrigatório',
         }}
         render={({ field: { onChange, value } }) => (
-          <Input onChange={onChange} value={value} style={{ width: '100px' }} error={!!errors.questionsQuantity?.message} name="questionsQuantity" />
+          <Input
+            id="questionsQuantity"
+            onChange={onChange}
+            value={value}
+            style={{ width: '100px' }}
+            error={!!errors.questionsQuantity?.message}
+            name="questionsQuantity"
+          />
         )}
       />
       {!errors.questionsQuantity?.message ? (

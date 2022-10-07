@@ -21,7 +21,7 @@ function StudantRegisteredTests() {
       )}
       {!!studantDoneTests.length && (
         <div>
-          <h4>Concluidos:</h4>
+          <h4>Concluídos:</h4>
           <TestsList allTests={studantDoneTests} />
         </div>
       )}

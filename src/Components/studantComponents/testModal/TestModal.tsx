@@ -7,7 +7,7 @@ import useCountDown from '../../../services/fetchService/countDown/CountDown';
 import { fetchService } from '../../../services/fetchService/FetchService';
 import { updateTest } from '../../../utils/updateTest';
 import { InputSection, TestModalContainer } from './TestModal.style';
-import { Alternatives, QuestionAnswered, TestModalProps } from './TestModal.types';
+import { Alternatives, TestModalProps } from './TestModal.types';
 
 export default function TestModal(props: TestModalProps) {
   const { formMethods, open, handleOpen, handleClose, questions } = props;
@@ -18,7 +18,7 @@ export default function TestModal(props: TestModalProps) {
   const [isFetchingTest, setIsFetchingTest] = React.useState(false);
   const [response, setResponse] = React.useState<string>('');
   const { setValue, getValues } = useForm();
-  const { Count, setCount, isCounting } = useCountDown(0.15);
+  const { Count, setCount, isCounting } = useCountDown(60);
   const handleChangeResponse = (event: React.ChangeEvent<HTMLInputElement>) => {
     setResponse((event.target as HTMLInputElement).value);
     const questionAnswered = { ...questions.newTest[currentQuestion], answer: (event.target as HTMLInputElement).value };

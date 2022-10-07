@@ -11,7 +11,7 @@ function TemaSelectStep(props: TemaSelectStepProps) {
     <div style={{ margin: '40px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <TemaList isTema selected={tema} handleSelect={setTema} listArray={arrayTemas} />
       <div>
-        <Button variant="contained" color="primary" onClick={handleNext}>
+        <Button variant="contained" disabled={!tema} color="primary" onClick={handleNext}>
           Próximo
         </Button>
       </div>

@@ -33,25 +33,29 @@ function SelectList(props: TemaListProps) {
   return (
     <List dense className={classes.root}>
       {listArray?.map(listItem => (
-        <ListItem key={listItem} button onClick={() => handleSelect(listItem)}>
-          <ListItemText primary={listItem} />
+        <ListItem style={{ justifyContent: 'space-between' }} key={listItem} button onClick={() => handleSelect(listItem)}>
+          <label htmlFor="select-studant">{listItem}</label>
           <ListItemIcon>
             {!isTema ? (
+              // <>
               <Checkbox
+                inputProps={{ id: 'select-studant' }}
                 edge="end"
                 onChange={() => {
                   handleSelect(listItem);
                 }}
+                data-testid="select-studant"
                 checked={selected.indexOf(listItem) !== -1}
               />
             ) : (
+              // </>
               <RadioGroup
                 name="Tema"
                 value={selected}
                 onChange={() => {
                   handleSelect(listItem);
                 }}>
-                <FormControlLabel style={radioButonStyle} value={listItem} control={<Radio />} label="" />
+                <FormControlLabel style={radioButonStyle} value={listItem} control={<Radio data-testid="tema-select" />} label="" />
               </RadioGroup>
             )}
           </ListItemIcon>
